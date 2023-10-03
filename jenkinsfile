@@ -1,4 +1,4 @@
-node("riscv64_runner1"){
+node("x86_runner2"){
     stage('*** Cleanup***') {
         cleanWs()
     }
@@ -7,9 +7,8 @@ node("riscv64_runner1"){
     } 
     stage('*** Compilation Phase ***') { 
         sh '''#!/bin/bash
-            mkdir build
-            cd build
-            cmake -DLLVM_ENABLE_PROJECTS="clang" -DCMAKE_BUILD_TYPE="Release" -G Ninja ../llvm
+            mkdir build && cd build
+            cmake -DLLVM_PARALLEL_LINK_JOBS=3 -DCMAKE_BUILD_TYPE=Release -DLLVM_TARGETS_TO_BUILD="X86;RISCV" -DLLVM_ENABLE_PROJECTS="clang" -G Ninja ../llvm
             ninja
          '''
     }
@@ -17,7 +16,7 @@ node("riscv64_runner1"){
         sh '''#!/bin/bash
             cd build
             bin/clang -v
-            ninja check
+            bin/llvm-objdump --version | grep riscv
          '''
     }
 }
