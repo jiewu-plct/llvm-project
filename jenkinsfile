@@ -9,8 +9,7 @@ node("x86_runner1"){
         sh '''#!/bin/bash
             cat ./jenkinsfile
             mkdir build && cd build
-            module load cmake/3.27.6
-            cmake -DLLVM_PARALLEL_LINK_JOBS=3 -DCMAKE_BUILD_TYPE=Release -DLLVM_TARGETS_TO_BUILD="X86;RISCV" -DLLVM_ENABLE_PROJECTS="clang" -G Ninja ../llvm
+            module load cmake/3.27.6 -DLLVM_PARALLEL_LINK_JOBS=3 -DCMAKE_BUILD_TYPE=Release -DLLVM_TARGETS_TO_BUILD="X86;RISCV" -DLLVM_ENABLE_PROJECTS="clang" -G Ninja ../llvm
             ninja
          '''
     }
