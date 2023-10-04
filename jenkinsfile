@@ -1,4 +1,4 @@
-node("x86_runner2"){
+node("x86_runner1"){
     stage('*** Cleanup***') {
         cleanWs()
     }
