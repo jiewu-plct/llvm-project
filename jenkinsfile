@@ -6,7 +6,7 @@ node("x86_runner1"){
         checkout scm
     } 
     stage('*** Compilation Phase ***') { 
-        sh '''#!/bin/bash
+        sh '''#!/bin/bash -l
             cat ./jenkinsfile
             mkdir build && cd build
             module load cmake/3.27.6
