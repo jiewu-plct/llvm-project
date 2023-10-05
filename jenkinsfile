@@ -23,6 +23,7 @@ node("x86_runner1"){
             cd build
             bin/clang -v
             bin/llvm-objdump --version | grep riscv
+            ninja check
          '''
     }
 }
