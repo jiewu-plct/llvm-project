@@ -6,14 +6,9 @@ node("sf2-3"){
         checkout scm
     } 
     stage('*** Compilation Phase ***') { 
-        sh '''#!/bin/bash -l
+        sh '''#!/bin/bash
             cat ./jenkinsfile
             mkdir build && cd build
-            module load cmake/3.27.6
-            module list
-            which cmake
-            module show cmake/3.27.6 
-            echo $PATH
             cmake -DLLVM_PARALLEL_LINK_JOBS=3 -DLLVM_ENABLE_PROJECTS="clang" -DCMAKE_BUILD_TYPE="Release" -G Ninja ../llvm
             ninja
          '''
