@@ -18,7 +18,7 @@ node("sf2-3"){
             cd build
             bin/clang -v
             bin/llvm-objdump --version | grep riscv
-            ninja check
+            ninja check-llvm
          '''
     }
 }
