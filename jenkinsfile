@@ -3,7 +3,9 @@ node("sf2-3"){
         cleanWs()
     }
     stage('*** Check out SCM ***') {
-        checkout scm
+        retry(5) {
+           checkout scm
+        }  
     } 
     stage('*** Compilation Phase ***') { 
         sh '''#!/bin/bash
