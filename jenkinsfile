@@ -1,4 +1,4 @@
-node("sf2-3"){
+node("sf2-2"){
     stage('*** Cleanup***') {
         cleanWs()
     }
